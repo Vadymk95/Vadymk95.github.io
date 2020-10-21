@@ -17,9 +17,9 @@ return yourNum;
 }
 
 if (num2 < 1 || isNaN(num1) || isNaN(num2)) {
-     alert("Вы ввели не корректные данные");
+     console.log("Вы ввели не корректные данные");
 } else {
-     alert( pow (num1, num2) );
+     console.log( pow (num1, num2) );
 }
 
 
