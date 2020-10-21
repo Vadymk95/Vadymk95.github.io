@@ -7,7 +7,7 @@
 const num1 = prompt("введите первое число");
 const num2 = prompt("введите второе число");
 
-function pow (num1, num2) {
+function pow(num1, num2) {
      let yourNum = num1;
 
      for (let i = 1; i < num2; i++){
@@ -35,7 +35,7 @@ const age = prompt("Введите ваш возраст:");
 
 function createUser(firstName = null, lastName = null, age = null) {
 
-     let infoUser = {
+     const infoUser = {
           name: firstName,
           surname: lastName,
           ageUser: age,
@@ -52,18 +52,18 @@ console.log(createUser(firstName, lastName, age));
 const someNum = prompt("Enter your number:");
 
 
-let yourGreeting = ("number less than 100");
-let yourGreeting2 = ("number greater than 100");
+const yourGreeting = ("number less than 100");
+const yourGreeting2 = ("number greater than 100");
 
-function greeting1 (yourGreeting) {
+function greeting1(yourGreeting) {
      return yourGreeting;
 }
 
-function greeting2 (yourGreeting2) {
+function greeting2(yourGreeting2) {
      return yourGreeting2;
 }
 
-function checkNumbers (greeting1, greeting2, someNum) {
+function checkNumbers(greeting1, greeting2, someNum) {
      if (someNum < 100) {
           console.log(greeting1 (yourGreeting));
      } else {
