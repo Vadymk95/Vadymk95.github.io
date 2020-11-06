@@ -54,14 +54,15 @@ console.log(upperWords);
 
 //2.2
 
+function elemToUpperCase(words) {
 
-function getWords() {
-
-	const newArray = [];
+	let newArray = [];
 
 	for (let elem of words) {
 
-		newArray.push([elem.toUpperCase()]);
+		const result = elem.toUpperCase();
+
+		newArray.push(elem.toUpperCase());
 
 	}
 
@@ -69,4 +70,6 @@ function getWords() {
 
 }
 
-console.log(getWords());
+const newVariable = elemToUpperCase(words);
+
+console.log(newVariable);
