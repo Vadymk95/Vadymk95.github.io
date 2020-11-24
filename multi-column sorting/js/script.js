@@ -20,7 +20,7 @@ const tableContainer = document.getElementById('table');
 
 new Handsontable(tableContainer, {
 	data: arr,
-	colHeaders: ["Without sorting", "Without sorting", "Without sorting", "Without sorting"],
+	colHeaders: ["Fisrt column", "Second column", "Third column", "Fourth column"],
 	multiColumnSorting: true,
 });
 const removeElem = document.querySelector('#hot-display-license-info').remove();
