@@ -26,7 +26,7 @@ function getCopy(obj) {
 		return newArr;
 	}
 
-	if (obj instanceof isObject) {
+	if (obj instanceof Object) {
 		const newObj = {};
 		for (let value in obj) {
 			if (obj.hasOwnProperty(value)) newObj[value] = getCopy(obj[value]);
