@@ -26,14 +26,14 @@ class Rabbit extends Animal {
 
 	eat(food) {
 		if (food instanceof Vegetable) {
-			this.stomach.push(food);
+			super.eat(food);
 		} else {
 			throw new Error('Invalid arguments');
 		}
 	}
 
 	jump() {
-		console.log("Jump!");
+		return console.log("Jump!");
 	};
 }
 
@@ -45,14 +45,14 @@ class Snake extends Animal {
 
 	eat(food) {
 		if (food instanceof Rabbit) {
-			this.stomach.push(food);
+			super.eat(food)
 		} else {
 			throw new Error('Invalid arguments');
 		}
 	}
 
 	crawl() {
-		console.log("I am snake!")
+		return console.log("I am snake!")
 	};
 }
 
@@ -65,17 +65,17 @@ class Human extends Animal {
 
 	eat(food) {
 		if (food instanceof Rabbit || food instanceof Snake || food instanceof Vegetable) {
-			this.stomach.push(food);
+			super.eat(food);
 		} else {
 			throw new Error('Invalid arguments');
 		}
 	}
 
 	walk() {
-		console.log("I am human!");
+		return console.log("I am human!");
 	};
 
 	greet() {
-		console.log("Hello guys!");
+		return console.log("Hello guys!");
 	};
 }
