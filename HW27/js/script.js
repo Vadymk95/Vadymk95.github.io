@@ -92,7 +92,7 @@ sendRequest('PATCH', `https://async-demo.herokuapp.com/objects/${id}/&prob=20`, 
       return;
       }
 // удаляем обьект со всеми изменениями
-   sendRequest('DELETE', `https://async-demo.herokuapp.com/objects/${id}/&prob=20`, null,
+   sendRequest('DELETE', `https://async-demo.herokuapp.com/objects/${id}/&prob=20`, createObj,
       (err) => {
                      if (err) {
                         console.error(err);
