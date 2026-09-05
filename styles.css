@@ -1,0 +1,367 @@
+/* Tokens: light is the base, dark redefines tokens only. */
+:root {
+  --ground: #eef0f2;
+  --surface: #f7f8f9;
+  --ink: #161b22;
+  --muted: #5b6570;
+  --hairline: #d3d8dc;
+  --accent: #7a5d1b;
+  --accent-ink: #eef0f2;
+
+  --font-display: "Newsreader", Georgia, "Times New Roman", serif;
+  --font-body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+
+  --step--1: clamp(0.83rem, 0.8rem + 0.15vw, 0.9rem);
+  --step-0: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+  --step-1: clamp(1.2rem, 1.1rem + 0.5vw, 1.45rem);
+  --step-2: clamp(1.5rem, 1.3rem + 1vw, 2rem);
+  --step-4: clamp(2.6rem, 1.9rem + 3vw, 4.4rem);
+
+  --space-1: 0.5rem;
+  --space-2: 1rem;
+  --space-3: 1.5rem;
+  --space-4: 2.5rem;
+  --space-5: 4rem;
+  --space-6: 6rem;
+
+  --measure: 66ch;
+  --rail: 11rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --ground: #0f1418;
+    --surface: #151b21;
+    --ink: #e6e9ec;
+    --muted: #9aa4ad;
+    --hairline: #26303a;
+    --accent: #d4a83a;
+    --accent-ink: #0f1418;
+  }
+}
+
+:root[data-theme="dark"] {
+  --ground: #0f1418;
+  --surface: #151b21;
+  --ink: #e6e9ec;
+  --muted: #9aa4ad;
+  --hairline: #26303a;
+  --accent: #d4a83a;
+  --accent-ink: #0f1418;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--ground);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: var(--step-0);
+  line-height: 1.55;
+  padding: var(--space-4) var(--space-3) var(--space-5);
+}
+
+@media (min-width: 48rem) {
+  body {
+    padding: var(--space-5) var(--space-4) var(--space-6);
+  }
+}
+
+a {
+  color: var(--accent);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.15em;
+}
+
+a:hover {
+  text-decoration-thickness: 2px;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.skip {
+  position: absolute;
+  left: var(--space-2);
+  top: -3rem;
+  background: var(--surface);
+  padding: var(--space-1) var(--space-2);
+}
+
+.skip:focus {
+  top: var(--space-2);
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+  margin: 0;
+}
+
+h1 {
+  font-size: var(--step-4);
+  line-height: 1.02;
+  font-variation-settings: "opsz" 72;
+}
+
+h2 {
+  font-size: var(--step-1);
+  line-height: 1.25;
+  color: var(--muted);
+}
+
+h3 {
+  font-size: var(--step-1);
+  line-height: 1.25;
+}
+
+p {
+  margin: 0;
+}
+
+.eyebrow,
+.when,
+.facts dt,
+.colophon {
+  font-family: var(--font-mono);
+  font-size: var(--step--1);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* Masthead and page grid share one left rail on wide screens. */
+.masthead,
+.block,
+.colophon {
+  max-width: calc(var(--rail) + var(--space-4) + var(--measure));
+  margin-inline: auto;
+}
+
+.masthead {
+  display: grid;
+  gap: var(--space-3);
+  padding-bottom: var(--space-4);
+  border-bottom: 1px solid var(--hairline);
+}
+
+.masthead h1 {
+  position: relative;
+  padding-bottom: var(--space-2);
+}
+
+.masthead h1::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 3.5rem;
+  height: 3px;
+  background: var(--accent);
+}
+
+.lede {
+  font-size: var(--step-1);
+  line-height: 1.4;
+  max-width: 34em;
+  text-wrap: pretty;
+}
+
+.facts {
+  display: grid;
+  gap: var(--space-2) var(--space-4);
+  margin: 0;
+}
+
+.facts div {
+  display: grid;
+  gap: 0.2rem;
+}
+
+.facts dd {
+  margin: 0;
+}
+
+@media (min-width: 40rem) {
+  .facts {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.block {
+  padding-block: var(--space-4);
+  border-bottom: 1px solid var(--hairline);
+  display: grid;
+  gap: var(--space-2);
+}
+
+.block:last-of-type {
+  border-bottom: 0;
+}
+
+@media (min-width: 64rem) {
+  .block {
+    grid-template-columns: var(--rail) minmax(0, var(--measure));
+    column-gap: var(--space-4);
+    align-items: start;
+  }
+
+  .block h2 {
+    position: sticky;
+    top: var(--space-3);
+  }
+}
+
+.prose {
+  display: grid;
+  gap: var(--space-2);
+  max-width: var(--measure);
+}
+
+/* Selected work: a year rail in mono, then the entry. */
+.work {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: var(--space-3);
+  max-width: var(--measure);
+}
+
+.work li {
+  display: grid;
+  gap: var(--space-1);
+}
+
+.work li div {
+  display: grid;
+  gap: var(--space-1);
+}
+
+.when {
+  font-variant-numeric: tabular-nums;
+  padding-top: 0.25rem;
+}
+
+@media (min-width: 48rem) {
+  .work li {
+    grid-template-columns: 7rem minmax(0, 1fr);
+    column-gap: var(--space-3);
+  }
+}
+
+/* How I work: definition list with hairlines, no cards. */
+.how {
+  margin: 0;
+  display: grid;
+  max-width: var(--measure);
+}
+
+.how div {
+  display: grid;
+  gap: var(--space-1);
+  padding-block: var(--space-2);
+  border-top: 1px solid var(--hairline);
+}
+
+.how dt {
+  font-weight: 600;
+}
+
+.how dd {
+  margin: 0;
+  color: var(--muted);
+}
+
+@media (min-width: 48rem) {
+  .how div {
+    grid-template-columns: 14rem minmax(0, 1fr);
+    column-gap: var(--space-3);
+  }
+}
+
+.side {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: var(--space-2);
+  max-width: var(--measure);
+}
+
+.side li {
+  display: grid;
+  gap: 0.2rem;
+}
+
+.side span {
+  color: var(--muted);
+}
+
+@media (min-width: 48rem) {
+  .side li {
+    grid-template-columns: 9rem minmax(0, 1fr);
+    column-gap: var(--space-3);
+  }
+}
+
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2) var(--space-3);
+  align-items: center;
+}
+
+.button {
+  display: inline-block;
+  padding: 0.65rem 1.1rem;
+  background: var(--accent);
+  color: var(--accent-ink);
+  text-decoration: none;
+  font-weight: 500;
+  border-radius: 2px;
+}
+
+.button:hover {
+  filter: brightness(1.08);
+}
+
+.colophon {
+  padding-top: var(--space-4);
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a,
+  .button {
+    transition: filter 120ms ease, text-decoration-thickness 120ms ease;
+  }
+}
+
+@media print {
+  body {
+    padding: 0;
+  }
+
+  .skip,
+  .button {
+    display: none;
+  }
+}

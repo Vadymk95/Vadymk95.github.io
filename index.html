@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Vadym Kononenko</title>
+  <meta name="description" content="Vadym Kononenko, lead frontend engineer. React, Next.js, TypeScript. Keeps production web products stable with hard quality gates and an AI-assisted delivery setup that ships reviewed, tested code.">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#eef0f2" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0f1418" media="(prefers-color-scheme: dark)">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="masthead">
+    <p class="eyebrow">Lead frontend engineer</p>
+    <h1>Vadym Kononenko</h1>
+    <p class="lede">I lead a small frontend team at a UK fintech and keep production React and Next.js products stable: complex form engines, server-side observability, CI quality gates, and an AI-assisted delivery setup that ships reviewed, tested code.</p>
+    <dl class="facts">
+      <div><dt>Based</dt><dd>Ukraine, European working hours</dd></div>
+      <div><dt>Stack</dt><dd>React, Next.js, TypeScript, Firebase</dd></div>
+      <div><dt>Working style</dt><dd>English, async-first, written updates</dd></div>
+    </dl>
+  </header>
+
+  <main id="main">
+    <section class="block" aria-labelledby="now">
+      <h2 id="now">What I do</h2>
+      <div class="prose">
+        <p>Hands-on lead for a team of three across twelve production repositories: public routes on Next.js, internal tools on React and Vue, Java services behind them. I own the frontend quality gates, review every change that ships, and write the standards the team works to.</p>
+        <p>Most implementation on my side now runs through an AI-assisted setup I built: agents write against a repository's own rules, hard gates stop what is wrong (lint, type-check, tests, bundle size, CI), and I review what is left. Delivery is faster. The review bar is not lower.</p>
+      </div>
+    </section>
+
+    <section class="block" aria-labelledby="work">
+      <h2 id="work">Selected work, 2026</h2>
+      <ol class="work">
+        <li>
+          <span class="when">Jun to Jul</span>
+          <div>
+            <h3>One schema-driven form engine replaced three hand-written ones</h3>
+            <p>Regulated multi-step application forms for a UK financial product. Phase 1 shipped; the Phase 2 review caught four blocking defects before merge: consent checkboxes, a crash in visibility rules, a field-key fallthrough, stale cross-record configuration.</p>
+          </div>
+        </li>
+        <li>
+          <span class="when">Jun to Aug</span>
+          <div>
+            <h3>Quality gates across a twelve-repository frontend fleet</h3>
+            <p>Formatting, lint caching, tests, bundle-size and CI gates measured per repository instead of copied. Ten of twelve live on master within a month, and one defect class found in three already-merged repositories: a fixer running ahead of its checker.</p>
+          </div>
+        </li>
+        <li>
+          <span class="when">Jun</span>
+          <div>
+            <h3>Server-side observability for the busiest public Next.js surface</h3>
+            <p>Datadog APM with trace-to-log correlation on server rendering, closing a gap where server errors had been invisible.</p>
+          </div>
+        </li>
+        <li>
+          <span class="when">Aug</span>
+          <div>
+            <h3>A rendering gate that found 272 violations behind a green build</h3>
+            <p>Content-variance checks for four project templates. The gate now measures what actually renders, not what compiles.</p>
+          </div>
+        </li>
+        <li>
+          <span class="when">Jul to Aug</span>
+          <div>
+            <h3>An AI delivery method the backend team asked for</h3>
+            <p>Agent rules, gates and templates committed to all twelve frontend repositories, then requested by the backend lead and merged into the company's shared templates the same day.</p>
+          </div>
+        </li>
+      </ol>
+    </section>
+
+    <section class="block" aria-labelledby="how">
+      <h2 id="how">How I work</h2>
+      <dl class="how">
+        <div>
+          <dt>Verify, then ship</dt>
+          <dd>Every fix carries a test that fails without it. Small pull requests, documentation in the same change, measurements before and after.</dd>
+        </div>
+        <div>
+          <dt>Orchestrate, review, own</dt>
+          <dd>Code is generated behind gates and read by me before it merges. The bar is the review, not the typing speed.</dd>
+        </div>
+        <div>
+          <dt>Write it down</dt>
+          <dd>Decisions, runbooks and progression standards live in documents the team can read, not in chat history.</dd>
+        </div>
+        <div>
+          <dt>Async by default</dt>
+          <dd>Written updates, short calls only when they save a day. European hours, English.</dd>
+        </div>
+      </dl>
+    </section>
+
+    <section class="block" aria-labelledby="side">
+      <h2 id="side">Side projects</h2>
+      <ul class="side">
+        <li><strong>doityourohm</strong><span>Interactive home-electricity course. Next.js 16, React 19, Firebase.</span></li>
+        <li><strong>InterviewOS</strong><span>Interview-prep PWA with 955 questions in two languages. React 19, Vite.</span></li>
+        <li><strong>dressify-ai</strong><span>Wardrobe assistant. React, Firebase Functions.</span></li>
+      </ul>
+    </section>
+
+    <section class="block" aria-labelledby="contact">
+      <h2 id="contact">Contact</h2>
+      <div class="prose">
+        <p>Email is the fastest way to reach me: <a href="mailto:vadymk95@gmail.com">vadymk95@gmail.com</a>. I read everything and answer within a working day.</p>
+        <p class="links">
+          <a class="button" href="mailto:vadymk95@gmail.com">Email me</a>
+          <a href="https://github.com/Vadymk95" rel="me">GitHub</a>
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="colophon">
+    <p>&copy; 2026 Vadym Kononenko. Set in Newsreader and IBM Plex. No trackers.</p>
+  </footer>
+</body>
+</html>
