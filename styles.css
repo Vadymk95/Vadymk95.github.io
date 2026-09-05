@@ -26,7 +26,7 @@
   --space-6: 6rem;
 
   --measure: 66ch;
-  --rail: 11rem;
+  --rail: 12.5rem;
 }
 
 @media (prefers-color-scheme: dark) {

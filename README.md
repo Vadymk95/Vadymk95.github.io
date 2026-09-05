@@ -1,6 +1,12 @@
-# vadym-site
+# Vadymk95.github.io
 
-One-page personal site. Static HTML and CSS, no build step, no JavaScript, no trackers.
+One-page personal site at https://vadymk95.github.io/. Static HTML and CSS, no build step, no JavaScript, no trackers.
+
+## Deploy
+
+GitHub Pages from `main`, root. Every push to `main` redeploys within a minute. To publish a change: edit, commit, push.
+
+Custom domain later: add a `CNAME` file with the domain, point DNS per GitHub Pages docs, register the domain on a personal email with WHOIS privacy on. `firebase.json` is kept as an alternative host and is not used by Pages.
 
 ## Run locally
 
@@ -10,18 +16,18 @@ python3 -m http.server 8765
 
 Open http://localhost:8765.
 
-## Deploy (pick one)
+## Files
 
-- Firebase Hosting: `firebase login`, `firebase use --add` (creates `.firebaserc`, gitignored is not needed), `firebase deploy --only hosting`. `firebase.json` is already here.
-- Cloudflare Pages or GitHub Pages: connect the repo, output directory `/`.
+- `index.html`, `styles.css`: the page. `404.html`: not-found page in the same style.
+- `favicon.svg`, `apple-touch-icon.png`, `og.png`: icons and the link-preview card (1200x630).
+- `robots.txt`, `sitemap.xml`: indexing.
+- `.nojekyll`: tells Pages to serve files as they are.
 
-Domain: register on a personal email address, keep WHOIS privacy on.
-
-## Before publishing (TODO)
+## Before sharing (checklist)
 
 - [x] Contact address set in `index.html`.
 - [ ] Decide whether to add a LinkedIn link next to GitHub.
-- [ ] Optional: years of experience in the lede (not stated anywhere in the source material, so left out).
+- [ ] Optional: years of experience in the lede (not stated in the source material, so left out).
 - [ ] Re-read the copy for anything that names or identifies an employer. The page deliberately names none and makes no availability claims.
 
 ## Design plan
