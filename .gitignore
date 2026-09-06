@@ -1,3 +1,9 @@
 .DS_Store
-.firebase/
+Thumbs.db
 *.log
+.firebase/
+.playwright-cli/
+.playwright/
+node_modules/
+.env
+.env.*
