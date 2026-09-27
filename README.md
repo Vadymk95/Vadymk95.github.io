@@ -30,6 +30,12 @@ Open http://localhost:8765.
 - [ ] Optional: years of experience in the lede (not stated in the source material, so left out).
 - [ ] Re-read the copy for anything that names or identifies an employer. The page deliberately names none and makes no availability claims.
 
+## Not indexed
+
+The page is reached through the link at the end of an outreach letter, not through search. `index.html` carries
+`<meta name="robots" content="noindex">`, and `robots.txt` allows crawling (a blocked crawler never sees the
+noindex tag) but no longer lists `sitemap.xml`. Working hours are left off the page on purpose.
+
 ## Design plan
 
 Subject: a hands-on frontend lead whose product is judgement and verification, not typing. Audience: founders and engineering leads at small product companies across English-speaking Europe and beyond (UK, Netherlands, Nordics, Germany, US). Job of the page: confirm in ten seconds that this is a real, careful senior, and give a contact.
