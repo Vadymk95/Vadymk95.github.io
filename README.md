@@ -19,6 +19,7 @@ Open http://localhost:8765.
 ## Files
 
 - `index.html`, `styles.css`: the page. `404.html`: not-found page in the same style.
+- `what-the-gate-caught.html`: the case study, linked from the 272-violations item in Selected work. Not indexed either: `noindex`, and no entry in `sitemap.xml`.
 - `favicon.svg`, `apple-touch-icon.png`, `og.png`: icons and the link-preview card (1200x630).
 - `robots.txt`, `sitemap.xml`: indexing.
 - `.nojekyll`: tells Pages to serve files as they are.

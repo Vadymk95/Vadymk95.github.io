@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>What the gate caught · Vadym Kononenko</title>
+  <meta name="description" content="One quality gate for a person and a coding agent. Its first run on a public React template found 272 rendering violations behind a green build.">
+  <link rel="canonical" href="https://vadymk95.github.io/what-the-gate-caught.html">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#eef0f2" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0f1418" media="(prefers-color-scheme: dark)">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="masthead">
+    <p class="back"><a href="./"><span aria-hidden="true">&larr;</span> Vadym Kononenko</a></p>
+    <p class="eyebrow">Case study</p>
+    <h1>What the gate caught</h1>
+    <p class="lede">One quality gate, run by a person and by a coding agent, and the defects it found behind a green build.</p>
+    <p class="source">The facts on this page come from four public templates, read on 9 October 2026: <a href="https://github.com/Vadymk95/template-1">template-1</a> (React), <a href="https://github.com/Vadymk95/template-spa-pwa">template-spa-pwa</a> (React&nbsp;PWA), <a href="https://github.com/Vadymk95/template-next-seo">template-next-seo</a> (Next.js) and <a href="https://github.com/Vadymk95/template-rn">template-rn</a> (React&nbsp;Native).</p>
+  </header>
+
+  <main id="main">
+    <section class="block" aria-labelledby="problem">
+      <h2 id="problem">The problem</h2>
+      <div class="prose">
+        <p>A small team now writes a good share of its frontend with AI tools. The code arrives faster than anyone can read it, the build stays green, and the defects show up in production: a layout that scrolls sideways on a phone, a button too small to tap, a test that passes without checking anything.</p>
+      </div>
+    </section>
+
+    <section class="block" aria-labelledby="setup">
+      <h2 id="setup">What the setup is</h2>
+      <div class="prose">
+        <p>One gate for a person and for a coding agent, tiered by moment so an edit costs seconds and the full chain runs once.</p>
+        <table class="table gate" aria-labelledby="setup">
+          <thead>
+            <tr>
+              <th scope="col">Moment</th>
+              <th scope="col">What runs</th>
+              <th scope="col">Cost</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">While editing <code>verify:iter</code></th>
+              <td>Lint, type-check, the tests the change reaches</td>
+              <td>Seconds</td>
+            </tr>
+            <tr>
+              <th scope="row">Before push <code>verify:push</code></th>
+              <td>Dependency audit, hook check, lint, format check, type-check, tests with coverage</td>
+              <td>12.3 to 29.2&nbsp;s</td>
+            </tr>
+            <tr>
+              <th scope="row">CI, required check <code>ci.yml</code></th>
+              <td>The full chain, never shortened: the push checks plus the build, bundle budgets and end-to-end tests where the template has them</td>
+              <td>Every push and pull request</td>
+            </tr>
+            <tr>
+              <th scope="row">Security <code>security.yml</code></th>
+              <td>Gitleaks secret scan; CodeQL on public repos</td>
+              <td>Every push and pull request, and weekly</td>
+            </tr>
+            <tr>
+              <th scope="row">Weekly, Mondays 06:00&nbsp;UTC <code>mutation.yml</code></th>
+              <td>Stryker mutation run: are the tests actually checking anything</td>
+              <td>Minutes, off the critical path</td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="note">The three web templates keep the build, bundle budgets and end-to-end tests out of the push until the first deploy, and CI runs them from day one. The push cost is the range over the last five passing pushes of each template, taken from the git-ignored trace log that every gate run writes on the author's machine.</p>
+        <p>Agent instruction files (<code>AGENTS.md</code>, with <code>CLAUDE.md</code> as a pointer) state the commands and the boundaries: what an agent must never touch, and which gate proves a change.</p>
+      </div>
+    </section>
+
+    <section class="block" aria-labelledby="caught">
+      <h2 id="caught">What it caught</h2>
+      <div class="prose">
+        <p>The first run of the rendering checks in <span class="nowrap">template-1</span> found <strong>272 violations</strong> behind a green build, zero after the fixes (<a href="https://github.com/Vadymk95/template-1/commit/cf358f755c60d21e24ff90bbdda169c6dedf47d6">the fix commit</a>). The classes, with what was measured:</p>
+        <table class="table" aria-labelledby="caught">
+          <thead>
+            <tr>
+              <th scope="col">Defect</th>
+              <th scope="col">Measured</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Header row could neither wrap nor shrink</th>
+              <td>The page scrolled sideways by 28&nbsp;px at 390&nbsp;px width, on every route</td>
+            </tr>
+            <tr>
+              <th scope="row">Body text without <code>overflow-wrap</code></th>
+              <td>A 40-character token overflowed a 292&nbsp;px column by 172&nbsp;px, only at 390&nbsp;px</td>
+            </tr>
+            <tr>
+              <th scope="row">Button row with <code>whitespace-nowrap</code> and no <code>min-w-0</code></th>
+              <td>1,161&nbsp;px of content in a 798&nbsp;px container at 1,440&nbsp;px</td>
+            </tr>
+            <tr>
+              <th scope="row">Header links with no touch height</th>
+              <td>39.5&times;20&nbsp;px tap targets, below the 24&nbsp;px minimum of WCAG 2.5.8, on every route and width</td>
+            </tr>
+            <tr>
+              <th scope="row"><code>focus-visible:outline-none</code> under Tailwind v4</th>
+              <td>In forced-colours mode both outline and box-shadow computed to <code>none</code>: keyboard focus was invisible</td>
+            </tr>
+          </tbody>
+        </table>
+        <p>Mutation testing adds the layer coverage cannot: Stryker changes the code and expects a test to fail. The weekly run fails below a per-template floor (break at 40 percent in <span class="nowrap">template-1</span> and <span class="nowrap">template-spa-pwa</span>, 35 in <span class="nowrap">template-next-seo</span> and 48 in <span class="nowrap">template-rn</span>, set in each <code>stryker.config.json</code>), so a suite that runs the code without checking it cannot quietly pass.</p>
+      </div>
+    </section>
+
+    <section class="block" aria-labelledby="week">
+      <h2 id="week">What a team gets in one week</h2>
+      <div class="prose">
+        <ol class="list">
+          <li>A read of one frontend repo: how the team uses AI tools, what the build checks today, where it is blind.</li>
+          <li>The gate installed and adapted to the stack, with baselines for existing debt (a ratchet: no new violations, old ones fixed over time), never a "green from day one" demand a legacy repo cannot meet.</li>
+          <li>An agent instruction file with the team's real commands and boundaries.</li>
+          <li>A short written report: what was found, what now fails the build, what is left for later.</li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="block" aria-labelledby="limits">
+      <h2 id="limits">What it does not do</h2>
+      <div class="prose">
+        <ul class="list">
+          <li>It does not make an AI tool smarter. A 2026 controlled study of 288 runs with Claude Code and Codex found that instruction files do not measurably change correctness (<a href="https://arxiv.org/abs/2607.27250">arXiv 2607.27250</a>). The gates are what stop the wrong code.</li>
+          <li>Hooks are code that runs on the developer's machine, so the team reads every one before it goes in. In February 2026 Check Point published a Claude Code flaw where a malicious project hook ran commands when a developer opened an untrusted repository; it was patched before publication (<a href="https://research.checkpoint.com/2026/rce-and-api-token-exfiltration-through-claude-code-project-files-cve-2025-59536/">Check Point Research</a>).</li>
+          <li>Frontend only.</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="colophon">
+    <p>&copy; 2026 Vadym Kononenko. Set in Newsreader and IBM Plex. No trackers.</p>
+  </footer>
+</body>
+</html>
